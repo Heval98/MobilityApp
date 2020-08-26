@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void RegisterUser(){
+        //New changes
         String email = tUser.getText().toString();
         String password = tPassword.getText().toString();
         if(email == "" || password == ""){

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //layout variables
     EditText tUser, tPassword;
-    Button bLogin;
+    Button bLogin, bRegister;
 
     //Authentication variables
     private FirebaseAuth mAuth;
@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tUser = (EditText)findViewById(R.id.User);
         tPassword = (EditText)findViewById(R.id.Password);
         bLogin = (Button)findViewById(R.id.Login);
+        bRegister = (Button)findViewById(R.id.Register);
 
         bLogin.setOnClickListener(this);
+        bRegister.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -70,6 +72,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void validateUser(){
         String email = tUser.getText().toString();
         String password = tPassword.getText().toString();
+        if(email == "" || password == ""){
+            Toast.makeText(MainActivity.this, "User or Password is empty.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -96,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void RegisterUser(){
         String email = tUser.getText().toString();
         String password = tPassword.getText().toString();
+        if(email == "" || password == ""){
+            Toast.makeText(MainActivity.this, "User or Password is empty.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override

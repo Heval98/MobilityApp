@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //layout variables
     EditText tUser, tPassword;
-    Button bLogin, bRegister;
+    Button bLogin, bRegister_user, bRegister_driver;
 
     //Authentication variables
     private FirebaseAuth mAuth;
@@ -43,10 +43,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tUser = (EditText)findViewById(R.id.User);
         tPassword = (EditText)findViewById(R.id.Password);
         bLogin = (Button)findViewById(R.id.Login);
-        bRegister = (Button)findViewById(R.id.Register);
+        bRegister_user = (Button)findViewById(R.id.Register_user);
+        bRegister_driver = (Button)findViewById(R.id.Register_driver);
 
         bLogin.setOnClickListener(this);
-        bRegister.setOnClickListener(this);
+        bRegister_user.setOnClickListener(this);
+        bRegister_driver.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -61,8 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Do the login action
                 validateUser();
                 break;
-            case R.id.Register:
+            case R.id.Register_user:
                 RegisterUser();
+                break;
+            case R.id.Register_driver:
+                startActivity(new Intent(MainActivity.this, Form_driver.class));
                 break;
             default:
                 break;

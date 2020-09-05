@@ -1,8 +1,11 @@
 package com.example.mobilityapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,22 +16,29 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mobilityapp.model.Driver;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
 public class Form_driver extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int GALLERY_INTENT = 1;
+
     EditText name_driver, last_name_driver, document_driver,
             email_driver, address_driver, property_card,
             bank_account, password_driver;
 
-    Button button_register_driver;
+    Button button_register_driver, button_up_image;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +55,9 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
         password_driver = (EditText)findViewById(R.id.txt_contraseñaPerson);
 
         button_register_driver = (Button)findViewById(R.id.button_register_driver);
+        button_up_image = (Button)findViewById(R.id.button_up);
         button_register_driver.setOnClickListener(this);
+        button_up_image.setOnClickListener(this);
 
         initialize_firebase();
     }
@@ -84,12 +96,18 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
                 clean_boxes();
             }
         }
+        else if (buttonID == R.id.button_up){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
     }
 
     private void initialize_firebase() {
         FirebaseApp.initializeApp(this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
     }
 
 
@@ -137,6 +155,25 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
         }
         else if(password.equals("")){
             password_driver.setError("Required");
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
+
+            Uri uri = data.getData();
+
+            StorageReference filePath = storageReference.child("fotos").child(uri.getLastPathSegment());
+
+            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(Form_driver.this, "Se subio exitosamente la foto", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

@@ -38,6 +38,7 @@ dependencies {
     //noinspection GradleCompatible,GradleDeprecatedConfiguration
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.0'
 }
 
 apply plugin: 'com.android.application'

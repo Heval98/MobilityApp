@@ -113,6 +113,11 @@
             android:inputType="textPassword"
             android:paddingTop="12dp"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up"
+        android:text="Subir Imagen del SOAT"/>
 
     <Button
         android:id="@+id/button_register_driver"

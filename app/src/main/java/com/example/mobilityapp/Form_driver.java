@@ -34,7 +34,8 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
             email_driver, address_driver, property_card,
             bank_account, password_driver;
 
-    Button button_register_driver, button_up_image;
+    Button button_register_driver, button_up_soat, button_up_tecno,
+            button_up_car, button_up_inside_the_car, button_up_motor, button_up_placa;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -55,9 +56,21 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
         password_driver = (EditText)findViewById(R.id.txt_contraseñaPerson);
 
         button_register_driver = (Button)findViewById(R.id.button_register_driver);
-        button_up_image = (Button)findViewById(R.id.button_up);
+        button_up_soat = (Button)findViewById(R.id.button_up_soat);
+        button_up_tecno = (Button)findViewById(R.id.button_up_tecno);
+        button_up_car = (Button)findViewById(R.id.button_up_car);
+        button_up_inside_the_car = (Button)findViewById(R.id.button_up_inside_the_car);
+        button_up_motor = (Button)findViewById(R.id.button_up_motor);
+        button_up_placa = (Button)findViewById(R.id.button_up_placa);
+
+
         button_register_driver.setOnClickListener(this);
-        button_up_image.setOnClickListener(this);
+        button_up_soat.setOnClickListener(this);
+        button_up_tecno.setOnClickListener(this);
+        button_up_car.setOnClickListener(this);
+        button_up_inside_the_car.setOnClickListener(this);
+        button_up_motor.setOnClickListener(this);
+        button_up_placa.setOnClickListener(this);
 
         initialize_firebase();
     }
@@ -96,7 +109,32 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
                 clean_boxes();
             }
         }
-        else if (buttonID == R.id.button_up){
+        else if (buttonID == R.id.button_up_soat){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
+        else if (buttonID == R.id.button_up_tecno){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
+        else if (buttonID == R.id.button_up_car){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
+        else if (buttonID == R.id.button_up_inside_the_car){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
+        else if (buttonID == R.id.button_up_motor){
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, GALLERY_INTENT);
+        }
+        else if (buttonID == R.id.button_up_placa){
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
             startActivityForResult(intent, GALLERY_INTENT);

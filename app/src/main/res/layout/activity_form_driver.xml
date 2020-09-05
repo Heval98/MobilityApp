@@ -116,9 +116,36 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_up"
+        android:id="@+id/button_up_soat"
         android:text="Subir Imagen del SOAT"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up_tecno"
+        android:text="Subir Imagen de la tecnomecanica"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up_car"
+        android:text="Subir Imagen del carro de lado"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up_inside_the_car"
+        android:text="Subir Imagen del carro en el interior"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up_motor"
+        android:text="Subir Imagen del motor"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_up_placa"
+        android:text="Subir Imagen de placa"/>
     <Button
         android:id="@+id/button_register_driver"
         android:layout_width="match_parent"

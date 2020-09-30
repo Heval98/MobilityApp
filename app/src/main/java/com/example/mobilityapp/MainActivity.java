@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this, "User or Password is empty.",
                             Toast.LENGTH_SHORT).show();
                 }
+                break;
             case R.id.Register_driver:
                 startActivity(new Intent(MainActivity.this, Form_driver.class));
                 break;

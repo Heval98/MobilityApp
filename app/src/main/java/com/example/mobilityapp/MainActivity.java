@@ -59,10 +59,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (buttonID){
             case R.id.Login:
                 //Do the login action
-                validateUser();
+                if(tPassword.getText().length() > 0 && tUser.getText().length() > 0){
+                    validateUser();
+                }else{
+                    Toast.makeText(MainActivity.this, "User or Password is empty.",
+                            Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.Register:
-                RegisterUser();
+                if(tPassword.getText().length() > 0 && tUser.getText().length() > 0){
+                    RegisterUser();
+                }else{
+                    Toast.makeText(MainActivity.this, "User or Password is empty.",
+                            Toast.LENGTH_SHORT).show();
+                }
                 break;
             default:
                 break;
@@ -72,11 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void validateUser(){
         String email = tUser.getText().toString();
         String password = tPassword.getText().toString();
-        if(email == "" || password == ""){
-            Toast.makeText(MainActivity.this, "User or Password is empty.",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -98,17 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         // ...
                     }
                 });
+
     }
 
     private void RegisterUser(){
         //New changes
         String email = tUser.getText().toString();
         String password = tPassword.getText().toString();
-        if(email == "" || password == ""){
-            Toast.makeText(MainActivity.this, "User or Password is empty.",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         // ...
                     }
                 });
+
     }
 
 }

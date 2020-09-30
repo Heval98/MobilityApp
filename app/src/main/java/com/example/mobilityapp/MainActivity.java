@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(MainActivity.this, MainMap.class));
+                            startActivity(new Intent(MainActivity.this, MapsActivity.class));
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

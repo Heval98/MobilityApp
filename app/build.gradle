@@ -41,6 +41,8 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.google.firebase:firebase-database:19.4.0'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
+    //fingerprint
+    implementation 'androidx.biometric:biometric:1.0.1'
 }
 
 apply plugin: 'com.android.application'

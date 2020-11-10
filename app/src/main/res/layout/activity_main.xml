@@ -52,24 +52,9 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.549"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="179dp" />
-
-    <Button
-        android:id="@+id/Register_user"
-        android:layout_width="300dp"
-        android:layout_height="41dp"
-        android:background="@drawable/buttonrb"
-        android:text="Register User"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594"
-        app:srcCompat="@drawable/buttonrb"
-        tools:layout_conversion_absoluteHeight="48dp"
-        tools:layout_conversion_absoluteWidth="178dp" />
 
     <Button
         android:id="@+id/Register_driver"
@@ -82,7 +67,39 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682"
+        app:layout_constraintVertical_bias="0.731"
+        app:srcCompat="@drawable/buttonrb"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="178dp" />
+
+    <Button
+        android:id="@+id/figerprint"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:background="@drawable/buttonrb"
+        android:text="FingerPrint Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811"
+        app:srcCompat="@drawable/buttonrb"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="178dp" />
+
+    <Button
+        android:id="@+id/Register_user"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:background="@drawable/buttonrb"
+        android:text="Register User"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643"
         app:srcCompat="@drawable/buttonrb"
         tools:layout_conversion_absoluteHeight="48dp"
         tools:layout_conversion_absoluteWidth="178dp" />
@@ -98,5 +115,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057"
         app:srcCompat="@drawable/title" />
+
+    <TextView
+        android:id="@+id/fingerText"
+        android:layout_width="239dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="22dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/User"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="209dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="2dp"
+        android:text="Remember me"
+        app:layout_constraintBottom_toTopOf="@+id/Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

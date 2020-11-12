@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Mobility App</string>
     <string name="title_activity_maps">Map</string>
+
+    <!--FECHA DE PICKERSACTIVITY-->
+    <string name="titlulo_pickers">Reserva tu viaje</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="formato_hora">hh:mm</string>
+    <!--Fin -->
+
 </resources>

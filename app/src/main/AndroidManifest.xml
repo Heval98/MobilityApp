@@ -38,7 +38,6 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".Form_driver" />
-        <activity android:name=".MainMap" />
         <activity android:name=".UserRegister" />
         <activity android:name=".DriverRegister" />
         <activity android:name=".MainActivity">
@@ -51,3 +50,5 @@
     </application>
 
 </manifest>
+
+

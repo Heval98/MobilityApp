@@ -2,6 +2,7 @@ package com.example.mobilityapp;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -29,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double latitude, longitude;
 
     Button logout;
+    Button calificar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         gpsTracker = new GPSTracker(getApplicationContext());
         mLocation = gpsTracker.getLocation();
+
         //creamos el progres bar
         myProgress = new ProgressDialog(this);
         myProgress.setTitle("Leyendo mapa...");
@@ -47,6 +50,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         logout = (Button) findViewById(R.id.logout);
+        calificar = (Button) findViewById(R.id.calificar);
+
+
+        calificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapsActivity.this, RatingBar.class);
+                startActivity(intent);
+
+
+            }
+        });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -90,9 +90,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 myProgress.dismiss();
             }
         });
-        LatLng ubicacion = new LatLng(latitude, longitude);
-        //mMap.addMarker(new MarkerOptions().position(ubicacion).title("Mi ubicación"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(ubicacion));
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         LatLng latLng = new LatLng(mLocation.getLatitude(), mLocation.getLongitude());

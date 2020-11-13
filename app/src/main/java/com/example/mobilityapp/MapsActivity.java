@@ -31,6 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Button logout;
     Button calificar;
+    Button reservarB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +52,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         logout = (Button) findViewById(R.id.logout);
         calificar = (Button) findViewById(R.id.calificar);
+        reservarB = (Button) findViewById(R.id.reservar);
 
 
         calificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MapsActivity.this, RatingBar.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+        reservarB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MapsActivity.this, PickersActivity.class);
                 startActivity(intent);
 
 

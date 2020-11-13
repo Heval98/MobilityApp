@@ -36,11 +36,13 @@
 
         <activity
             android:name=".MapsActivity"
+            android:foregroundServiceType="location"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".Form_driver" />
         <activity android:name=".UserRegister" />
         <activity android:name=".DriverRegister" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".RatingBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,6 +51,5 @@
         </activity>
     </application>
 
-</manifest>
 
 

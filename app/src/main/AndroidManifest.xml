@@ -41,6 +41,8 @@
         <activity android:name=".MainMap" />
         <activity android:name=".UserRegister" />
         <activity android:name=".DriverRegister" />
+        <activity android:name=".Lugares" />
+        <activity android:name=".Perfil_activity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

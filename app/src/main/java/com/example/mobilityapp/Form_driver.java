@@ -2,11 +2,14 @@ package com.example.mobilityapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +19,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mobilityapp.model.Driver;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -29,7 +37,10 @@ import java.util.UUID;
 public class Form_driver extends AppCompatActivity implements View.OnClickListener {
 
     private static final int GALLERY_INTENT = 1;
+    public String uuid_customer;
+    private static final String TAG = "";
 
+    private FirebaseAuth mAuth;
     EditText name_driver, last_name_driver, document_driver,
             email_driver, address_driver, property_card,
             bank_account, password_driver;
@@ -43,7 +54,9 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        uuid_customer = UUID.randomUUID().toString();
         setContentView(R.layout.activity_form_driver);
 
         name_driver = (EditText)findViewById(R.id.txt_nombrePersona);
@@ -95,7 +108,7 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
                 validation();
             }else {
                 Driver d = new Driver();
-                d.setUid(UUID.randomUUID().toString());
+                d.setUid(uuid_customer);
                 d.setName_driver(name);
                 d.setLast_name_driver(last_name);
                 d.setDocument_person(document);
@@ -107,7 +120,44 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
                 databaseReference.child("Driver").child(d.getUid()).setValue(d);
                 Toast.makeText(this, "Agregar", Toast.LENGTH_LONG).show();
                 clean_boxes();
+
+                mAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "createUserWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Toast.makeText(Form_driver.this, "Registration Success.",
+                                            Toast.LENGTH_SHORT).show();
+                                    //updateUI(user);
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                    Toast.makeText(Form_driver.this, "Registration failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    //updateUI(null);
+                                }
+
+                                // ...
+                            }
+                        });
+                AlertDialog.Builder myBuild = new AlertDialog.Builder(this);
+                myBuild.setMessage("Tu respuesta se dara en 5 dias si fuiste admintido");
+                myBuild.setTitle("Espera de confirmación");
+                myBuild.setPositiveButton("Entendido", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(Form_driver.this, MainMap.class);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog dialog = myBuild.create();
+                dialog.show();
             }
+
         }
         else if (buttonID == R.id.button_up_soat){
             Intent intent = new Intent(Intent.ACTION_PICK);
@@ -146,6 +196,7 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
     }
 
 
@@ -204,7 +255,7 @@ public class Form_driver extends AppCompatActivity implements View.OnClickListen
 
             Uri uri = data.getData();
 
-            StorageReference filePath = storageReference.child("fotos").child(uri.getLastPathSegment());
+            StorageReference filePath = storageReference.child(uuid_customer).child(uri.getLastPathSegment());
 
             filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override

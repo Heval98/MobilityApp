@@ -44,6 +44,9 @@
         <activity android:name=".UserRegister" />
         <activity android:name=".DriverRegister" />
         <activity android:name=".RatingBar" />
+        <activity android:name=".Lugares" />
+        <activity android:name=".Perfil_activity" />
+>>>>>>> e3a62648f3376d001548c289de747ec5a039c45b
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

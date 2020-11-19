@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //layout variables
     EditText tUser, tPassword;
-    Button bLogin, bRegister_user, bRegister_driver;
+    Button bLogin, bRegister_user, bRegister_driver,PruebaTabs, PruebaMapa;
 
     //Authentication variables
     private FirebaseAuth mAuth;
@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bLogin = (Button)findViewById(R.id.Login);
         bRegister_user = (Button)findViewById(R.id.Register_user);
         bRegister_driver = (Button)findViewById(R.id.Register_driver);
+        PruebaTabs = (Button)findViewById(R.id.prueba_tabs_button);
 
         bLogin.setOnClickListener(this);
+        PruebaTabs.setOnClickListener(this);
         bRegister_user.setOnClickListener(this);
         bRegister_driver.setOnClickListener(this);
 
@@ -191,6 +193,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, Form_driver.class));
                 break;
             default:
+                break;
+            case R.id.prueba_tabs_button:
+                startActivity(new Intent(MainActivity.this, Perfil_activity.class));
                 break;
         }
     }
